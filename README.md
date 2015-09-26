@@ -36,7 +36,7 @@ Automated pitch uploading in Python using Selenium.
     ```
     Newlines act as delimiters between rows. Populate `data/video_pitch_data.csv` with properly formatted data for the current batch of uploads.
 
-1. Videos for the current batch of uploads go in `data/videos`. File names should be formatted `first_last.mov`.
+1. Videos for the current batch of uploads go in `data/videos`. File names should be formatted `first_last.mov`. **All videos must be less than 30 MB.**
 
 1. Start upload batch:
 
