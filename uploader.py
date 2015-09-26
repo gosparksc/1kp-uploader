@@ -1,7 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
-import os, csv, re, time
+import sys, os, csv, re, time
+
+confirm = raw_input("Type YES to continue: ")
+if(confirm != "YES"):
+    sys.exit()
 
 driver = webdriver.Firefox()
 base_url = "http://1000pitches.com"
