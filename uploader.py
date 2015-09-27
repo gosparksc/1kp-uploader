@@ -84,7 +84,6 @@ for row in reader:
         if(i == 7 and col == ""):
             item[i] = item[5]
 
-        # TODO: add logging to file
         print (item[i])
 
         i += 1
@@ -106,7 +105,6 @@ for row in reader:
     while(len(driver.find_elements_by_class_name("error")) > 0):
         if(j >= len(password)):
             # TODO: handle case where alternative email exists in system, but all passwords are incorrect
-            # TODO: send email to hello@sparksc.org with log of results
             item[2] = "1kp2015" + item[2]
             print "UNABLE TO LOGIN. Trying alternative " + item[2] + "."
             account_create(item)
@@ -119,6 +117,11 @@ for row in reader:
 
     driver.find_element_by_id("edit-continue").click()
     driver.find_element_by_id("edit-submit").click()
+
+    # check that pitch was submitted successfully
+    form_contents = driver.find_element_by_id("pitch-form").text
+    assert "Your pitch has been submitted" in form_contents
+
     driver.find_element_by_link_text("Logout").click()
 
 driver.close()
