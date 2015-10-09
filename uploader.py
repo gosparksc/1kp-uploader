@@ -3,6 +3,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 import sys, os, csv, re, time
 
+# TODO: integrate HandBrake CLI for video compression (https://handbrake.fr/downloads2.php)
+
 def account_create(item):
     driver.find_element_by_link_text("Pitch Your Idea").click()
     Select(driver.find_element_by_id("edit-university")).select_by_visible_text("University of Southern California")
@@ -38,7 +40,8 @@ def pitch_add(item):
     driver.find_element_by_id("edit-continue").click()
     driver.find_element_by_css_selector("*[data-selector='upload-video']").click()
     driver.find_element_by_css_selector('input[type="file"]').clear()
-    driver.find_element_by_css_selector('input[type="file"]').send_keys(video_dir + "/" + item[0].lower() + "_" + item[1].lower() + ".mov")
+    # TODO: remove spaces from names (for example, "Doo Hyun Nam"). don't remove special characters ("-")
+    driver.find_element_by_css_selector('input[type="file"]').send_keys(video_dir + "/" + item[0].lower() + "_" + item[1].lower() + ".mp4")
     while(len(driver.find_elements_by_class_name("btn-default")) == 0):
         time.sleep(2)
 

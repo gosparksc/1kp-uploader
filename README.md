@@ -2,6 +2,18 @@
 
 Automated pitch uploading in Python using Selenium.
 
+## Prerequisites
+
+1. Place all videos that you want to upload in a separate folder.
+
+1. Install HandBrake (https://handbrake.fr/).
+
+1. Open HandBrake and select the folder containing your source videos.
+
+1. 
+
+1. Copy newly compressed files from folder into `./data/videos`.
+
 ## Installation
 
 1. Make sure that you have Firefox (http://firefox.com/) installed on your system.
@@ -20,7 +32,7 @@ Automated pitch uploading in Python using Selenium.
     .
     ├── data
     |   ├── videos
-    |   |   └── first_last.mov
+    |   |   └── first_last.mp4
     |   └── video_pitch_data.csv
     ├── .gitignore
     ├── README.md
@@ -36,7 +48,7 @@ Automated pitch uploading in Python using Selenium.
     ```
     Newlines act as delimiters between rows. Populate `data/video_pitch_data.csv` with properly formatted data for the current batch of uploads.
 
-1. Videos for the current batch of uploads go in `data/videos`. File names should be formatted `first_last.mov`. **All videos must be less than 30 MB.**
+1. Videos for the current batch of uploads go in `data/videos`. File names should be formatted `first_last.mp4`. **All videos must be less than 30 MB.**
 
 1. Start upload batch:
 
