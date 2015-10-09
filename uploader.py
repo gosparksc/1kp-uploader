@@ -44,6 +44,8 @@ def pitch_add(item):
     driver.find_element_by_css_selector('input[type="file"]').send_keys(video_dir + "/" + item[0].lower() + "_" + item[1].lower() + ".mp4")
     while(len(driver.find_elements_by_class_name("btn-default")) == 0):
         time.sleep(2)
+    assert driver.find_elements_by_class_name("btn-default")
+    os.rename(video_dir + "/" + item[0].lower() + "_" + item[1].lower() + ".mp4", video_dir + "/uploaded/" + item[0].lower() + "_" + item[1].lower() + ".mp4")
 
 confirm = raw_input("Type YES to continue: ")
 if(confirm != "YES"):
@@ -66,9 +68,10 @@ item = ["", # 0 FIRST_NAME
         "", # 6 PITCH_CATEGORY
         ""] # 7 PITCH_DESCRIPTION
 
+count = 0
 for row in reader:
     i = 0
-    print ">>>>> PITCH NUMBER " + str(i) + " <<<<<"
+    print ">>>>> PITCH NUMBER " + str(count) + " <<<<<"
 
     for col in row:
         item[i] = col
@@ -126,5 +129,9 @@ for row in reader:
     assert "Your pitch has been submitted" in form_contents
 
     driver.find_element_by_link_text("Logout").click()
+
+    count += 1
+
+# TODO: logging
 
 driver.close()
