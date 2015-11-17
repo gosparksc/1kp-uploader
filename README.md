@@ -10,8 +10,6 @@ Automated pitch uploading in Python using Selenium.
 
 1. Open HandBrake and select the folder containing your source videos.
 
-1. 
-
 1. Copy newly compressed files from folder into `./data/videos`.
 
 ## Installation
