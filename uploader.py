@@ -7,9 +7,8 @@ import sys, os, csv, re, time
 
 def account_create(item):
     driver.find_element_by_link_text("Pitch Your Idea").click()
-    time.sleep(0.5)
     Select(driver.find_element_by_id("edit-university")).select_by_visible_text("University of Southern California")
-    time.sleep(0.5)
+    time.sleep(0.25)
     driver.find_element_by_id("edit-first-name").clear()
     driver.find_element_by_id("edit-first-name").send_keys(item[0])
     driver.find_element_by_id("edit-last-name").clear()
@@ -23,12 +22,13 @@ def account_create(item):
     if(driver.find_element_by_id("edit-newsletter").is_selected()):
         driver.find_element_by_id("edit-newsletter").click()
     driver.find_element_by_id("edit-continue").click()
-    if(driver.find_elements_by_class_name("btn-default")): # form outdated error
-        driver.find_element_by_link_text("reload this page").click()
+    if("outdated" in driver.find_element_by_class_name("error").text): # form outdated error
+        driver.find_element_by_link_text("Logout").click()
         account_create(item)
 
 def account_login(item, pwd):
     driver.find_element_by_link_text("Login").click()
+    time.sleep(0.25)
     driver.find_element_by_id("edit-name").clear()
     driver.find_element_by_id("edit-name").send_keys(item[2])
     driver.find_element_by_id("edit-pass").clear()
